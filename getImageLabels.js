@@ -3,6 +3,13 @@
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 
+/**
+ * Wrapper function to get labels from image
+ *
+ * @async
+ * @param {string} imageUrl - A string representing the URL to an image
+ * @returns {object} - Returns a response body with statusCode and message (if successful, labels will be in message)
+ */
 exports.getImageLabels = async imageUrl => {
 	let response = {
 		statusCode: 0,
@@ -37,7 +44,14 @@ exports.getImageLabels = async imageUrl => {
 	return response;
 };
 
-// Get image labels
+/**
+ * Get labels/tags from image using Google Cloud Vision API
+ *
+ * @async
+ * @function
+ * @param {string} imageUrl - A string representing the URL to an image
+ * @returns {Array} - Returns an array of strings, of the image tags
+ */
 async function getLabelsFromImage(imageUrl) {
 	const [RESULT] = await client.labelDetection(imageUrl);
 	const _LABELS = RESULT.labelAnnotations;

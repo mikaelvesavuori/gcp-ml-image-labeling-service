@@ -7,7 +7,7 @@ plugins:
 provider:
   name: google
   region: europe-west1 # OPTIONAL: Edit if you want to
-  
+
   project: {PROJECT_ID} # EDIT THIS to your value
   credentials: ~/.gcloud/{KEYFILE}.json # EDIT THIS to your value
 
