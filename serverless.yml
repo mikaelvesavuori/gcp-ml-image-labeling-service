@@ -1,5 +1,5 @@
 service:
-  name: gcp-ml-image-labeling-service
+  name: imagelabeller # BUG: Must not contain dashes, else will fail in nested Gaxios dependency?
 
 plugins:
   - serverless-google-cloudfunctions
@@ -8,11 +8,12 @@ provider:
   name: google
   region: europe-west1 # OPTIONAL: Edit if you want to
 
-  project: {PROJECT_ID} # EDIT THIS to your value
-  credentials: ~/.gcloud/{KEYFILE}.json # EDIT THIS to your value
+  # THESE TWO MUST BE UPDATED BY YOU!
+  project: "${PROJECT_ID}" # EDIT THIS to your value
+  credentials: ~/.gcloud/${KEYFILE}.json # EDIT THIS to your value
 
   runtime: nodejs10
-  memorySize: 1024
+  memorySize: 1024 # Give it lots of RAM to work faster
   timeout: 10s
 
 functions:

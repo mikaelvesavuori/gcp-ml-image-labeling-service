@@ -8,13 +8,10 @@ const client = new vision.ImageAnnotatorClient();
  *
  * @async
  * @param {string} imageUrl - A string representing the URL to an image
- * @returns {object} - Returns a response body with statusCode and message (if successful, labels will be in message)
+ * @returns {Array} - Returns an array of strings, of the image tags
  */
 exports.getImageLabels = async imageUrl => {
-	let response = {
-		statusCode: 0,
-		message: ''
-	};
+	let response = null;
 
 	// Make sure we have the image URL
 	if (imageUrl) {
@@ -24,21 +21,11 @@ exports.getImageLabels = async imageUrl => {
 		// Attempt to label image
 		try {
 			labels = await getLabelsFromImage(imageUrl);
-
-			response = {
-				statusCode: 200,
-				message: labels
-			};
+			response = labels;
 		} catch (err) {
 			console.error(`Failed to analyze image.`, err);
 			throw err;
 		}
-	} else {
-		// Request is not providing required data
-		response = {
-			statusCode: 400,
-			message: 'Must provide "imageUrl" parameter!'
-		};
 	}
 
 	return response;

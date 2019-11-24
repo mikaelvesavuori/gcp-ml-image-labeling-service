@@ -10,13 +10,15 @@ This will be of great usage if you want to quickly set up an image tagging servi
 
 - You will need a Google Cloud Platform account; if you don't have one, [set one up for free and get credit to use](https://cloud.google.com/free/)
 - I am assuming that you will use [Serverless Framework](https://serverless.com) to deploy it (however you can certainly do that manually), which necessitates that you install it
-- Configure `serverless.yml` with your project ID and a path to your keyfile/credentials
+- Configure `serverless.yml` with your project ID and a [path to your keyfile/credentials](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
 ## Instructions
 
 ### Deployment
 
 Just run `sls deploy` and it should deploy just fine, given that you configured the above steps and have a GCP account.
+
+If you get a weird Gaxios error, make sure that your service name in `serverless.yml` does not contain dashes. That should fix it.
 
 ### Using the labeling service
 
