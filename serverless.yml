@@ -6,10 +6,12 @@ plugins:
 
 provider:
   name: google
-  runtime: nodejs10
   region: europe-west1 # OPTIONAL: Edit if you want to
+  
   project: {PROJECT_ID} # EDIT THIS to your value
   credentials: ~/.gcloud/{KEYFILE}.json # EDIT THIS to your value
+
+  runtime: nodejs10
   memorySize: 1024
   timeout: 10s
 
@@ -18,4 +20,4 @@ functions:
     handler: getLabels
     events:
       - http: getLabels
-        method: GET
+        method: POST
