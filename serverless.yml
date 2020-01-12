@@ -13,7 +13,7 @@ provider:
   credentials: ~/.gcloud/${KEYFILE}.json # EDIT THIS to your value
 
   runtime: nodejs10
-  memorySize: 1024 # Give it lots of RAM to work faster
+  memorySize: 2048 # Give it lots of RAM to work faster
   timeout: 10s
 
 functions:
